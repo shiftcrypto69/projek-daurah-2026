@@ -30,13 +30,15 @@
         <div class="content-overlay">
             
             <div id="countdown-timer">
-                <p style="font-size: 0.9rem; margin: 0; color: #00ff00; font-weight: bold; letter-spacing: 1px;">PROGRAM BERMULA DALAM:</p>
+                <p class="timer-label">PROGRAM BERMULA DALAM</p>
                 <span id="time">00d 00:00:00</span>
             </div>
 
             <div class="qr-section">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://pengurusanemediamasjidkampungs-dotcom.github.io/pendaftaran-daurah-mkslb-2026/&ecc=H" alt="QR Pendaftaran" class="qr-code">
-                <p class="qr-label">IMBAS UNTUK DAFTAR</p>
+                <div class="qr-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://pengurusanemediamasjidkampungs-dotcom.github.io/pendaftaran-daurah-mkslb-2026/&ecc=M&color=333333" alt="QR Pendaftaran" class="qr-code">
+                </div>
+                <p class="qr-label">IMBAS PENDAFTARAN</p>
             </div>
 
         </div>
@@ -61,11 +63,9 @@
                 const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
                 const s = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
                 
-                // Efek titik berkelip: jika saat genap, titik muncul. Jika ganjil, titik hilang (ruang kosong).
                 const separator = (new Date().getSeconds() % 2 === 0) ? ":" : " ";
                 
-                document.getElementById("time").innerHTML = 
-                    `${d}d ${h}${separator}${m}${separator}${s}`;
+                document.getElementById("time").innerHTML = `${d}d ${h}${separator}${m}${separator}${s}`;
             }, 1000);
         }
         window.onload = startTimer;
