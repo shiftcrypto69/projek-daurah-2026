@@ -1,26 +1,33 @@
-# 🛠️ Projek Daurah 2026: SVG Asset Extraction
+# ⌚ Daurah Remaja 2026 - Dashboard TV Masjid
 
-Projek ini merupakan satu eksperimen teknikal dalam melakukan **Reverse Engineering** terhadap fail SVG yang kompleks (hasil eksport dari Canva) untuk dijadikan sebuah laman web statik yang ringan, responsif, dan mesra SEO.
+> **"Simplicity is the ultimate sophistication."** > Sistem paparan maklumat pendaftaran yang ringan, tepat, dan elegan—diinspirasikan oleh ketahanan **Casio F-91W** dan modeniti **iPhone Dynamic Island**.
 
-## 🚀 Objektif Teknikal
+---
 
-1.  **Extraction**: Memisahkan data Base64 (imej binari) daripada struktur XML fail SVG.
-2.  **Optimization**: Mengurangkan saiz fail asal (438KB) kepada struktur vektor bersih (0.74KB) dan aset imej JPEG yang dioptimumkan.
-3.  **Hybrid Deployment**: Menggabungkan imej hasil ekstraksi dengan lapisan metadata HTML/CSS untuk keterlihatan enjin carian (SEO).
+## 🛠️ Spesifikasi Sistem
+* **Enjin:** HTML5 / CSS3 / JavaScript (Tanpa Framework).
+* **Logik Masa:** Real-time Countdown (JS Interval).
+* **Estetika:** * **UI:** Grey Pastel Dynamic Notch.
+    * **Font:** Monospace (Digital Accuracy).
+    * **Warna:** Obsidian Black & Slate Grey.
 
-## 🛠️ Alatan & Teknologi
+## 🚀 Ciri-Ciri Utama
+- ✅ **Offline-Ready:** Kod JavaScript yang ringan, boleh berjalan tanpa internet selepas dimuatkan.
+- ✅ **Dynamic Notch:** Countdown yang mengikut gaya reka bentuk moden namun mengekalkan kejelasan jam digital klasik.
+- ✅ **Auto-Sync:** Mengira baki masa tepat ke **1 Mac 2026** berdasarkan jam sistem.
+- ✅ **High Contrast:** Dioptimumkan untuk paparan TV 43" bagi memastikan QR Code mudah diimbas dari jarak jauh.
 
-* **Python 3.14.2**: Digunakan untuk skrip ekstraksi `extract_svg_assets.py` dan pembersihan `clean_svg.py`.
-* **HTML5 & CSS3**: Untuk membina *canvas* responsif dan lapisan teks (overlay).
-* **GitHub Actions**: Automasi deployment ke GitHub Pages.
-* **JSON-LD**: Metadata skema acara untuk pengindeksan Google yang lebih tepat.
+## 📂 Struktur Fail
+- `index.html` : Kerangka dan logik pengiraan masa (Cip Jam).
+- `style.css` : Reka bentuk antaramuka (Badan Jam).
+- `poster_bg.webp` : Latar belakang visual program.
 
-## 📂 Struktur Projek
+## 📟 Cara Penggunaan di TV Masjid
+1. Pastikan TV disambungkan ke internet untuk muat turun pertama kali.
+2. Buka pelayar (Browser) TV dan masukkan URL GitHub Pages anda.
+3. Tetapkan pelayar kepada **Full Screen Mode**.
+4. Biarkan ia berjalan—macam F-91W, ia direka untuk berfungsi tanpa henti.
 
-```text
-├── .github/workflows/  # Automasi Deployment
-├── images/             # Aset imej hasil extraction (poster_bg.jpg)
-├── extract_svg_assets.py # Skrip Python Extraction
-├── clean_svg.py        # Skrip Python Cleaning
-├── index.html          # Struktur web & Metadata
-└── style.css           # Seni bina visual responsif
+---
+**Digerakkan oleh:** [Pengurusan eMedia Masjid Kampung Sawah Lebar]  
+*F-91W Style: Reliable. Clean. Timeless.*
