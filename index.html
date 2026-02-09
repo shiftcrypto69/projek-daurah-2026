@@ -2,142 +2,207 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <title>Daurah Remaja Quranic 2026 - Ultimate Clone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daurah Remaja Quranic 2026 - V7 Refined</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Yellowtail&family=Montserrat:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Yellowtail&family=Montserrat:wght@700;900&display=swap');
 
         :root {
-            --original-teal: #0A8080; /* Warna teal dalam imej */
-            --original-dark-blue: #0A2647;
-            --original-red: #C2185B;
+            --primary-blue: #1E88E5;
+            --dark-navy: #0A2647;
+            --accent-red: #E91E63;
+            --soft-blue: #7ED9F7;
         }
 
-        body { background-color: #f0f0f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        body { 
+            background-color: #e2e8f0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+        }
 
         .poster-canvas {
-            width: 1050px; height: 550px;
-            background: #fff; position: relative;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.3);
-            overflow: hidden; border: 15px solid white;
+            width: 1050px; 
+            height: 550px;
+            background: #fff; 
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+            overflow: hidden; 
+            border: 12px solid white;
         }
 
-        /* HEADER DENGAN TEKSTUR ALAM PUDAR */
+        /* Header dengan gaya lebih dinamik */
         .header-bg {
-            height: 65%;
-            background: linear-gradient(rgba(126, 217, 247, 0.8), rgba(126, 217, 247, 0.8)), 
-                        url('https://www.transparenttextures.com/patterns/paddy.png'); /* Tekstur daun/alam */
-            background-color: #7ED9F7;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 62%;
+            background: linear-gradient(135deg, #7ED9F7 0%, #B2EBF2 100%);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tekstur Halus */
+        .header-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .title-wrapper {
+            display: flex; 
+            align-items: center; 
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        .text-side-main {
+            font-family: 'Archivo Black', sans-serif;
+            color: var(--dark-navy);
+            font-size: 32px; 
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .text-script-center {
+            font-family: 'Yellowtail', cursive;
+            font-size: 155px; 
+            color: var(--primary-blue);
+            text-shadow: 4px 4px 0px white, 10px 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(-4deg);
+            margin: 0 -10px;
+        }
+
+        .text-year-bold {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 75px; 
+            color: #333;
+            letter-spacing: -4px;
+        }
+
+        .sticker-cta {
+            position: absolute; 
+            top: 30px; 
+            right: 40px;
+            background: var(--accent-red); 
+            color: white;
+            padding: 12px 20px; 
+            border-radius: 8px;
+            transform: rotate(3deg); 
+            box-shadow: 5px 5px 0px #880E4F;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .info-section {
+            height: 38%; 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr 0.8fr;
+            padding: 25px 60px; 
+            align-items: center; 
+            background: white;
             position: relative;
         }
 
-        /* SUSUNAN TEKS MENGAPIT (SEBIJIK ASAL) */
-        .title-wrapper {
-            display: flex; align-items: center; gap: 20px;
-            margin-top: 20px;
+        .glass-qr-box {
+            background: rgba(126, 217, 247, 0.1);
+            border: 2px dashed var(--primary-blue);
+            padding: 10px; 
+            border-radius: 12px;
+            text-align: center;
         }
 
-        .text-side {
-            font-family: 'Archivo Black', sans-serif;
-            color: var(--original-dark-blue);
-            font-size: 28px; text-transform: uppercase;
-            letter-spacing: 2px;
+        .footer-bar {
+            position: absolute; 
+            bottom: 0; 
+            width: 100%;
+            height: 45px; 
+            background: var(--dark-navy);
+            display: flex; 
+            align-items: center; 
+            padding-left: 150px;
+            color: white;
         }
 
-        .text-center-script {
-            font-family: 'Yellowtail', cursive;
-            font-size: 140px; color: #1E88E5;
-            text-shadow: 4px 4px 0px white, 8px 8px 20px rgba(0,0,0,0.15);
-            transform: rotate(-5deg);
-        }
-
-        /* LOGO POSITIONING */
-        .logo-box {
-            position: absolute; top: 20px; left: 40px;
-            width: 100px; height: 100px;
-        }
-
-        /* REGISTER STICKER */
-        .sticker-red {
-            position: absolute; top: 30px; right: 40px;
-            background: var(--original-red); color: white;
-            padding: 10px 25px; border-radius: 10px;
-            transform: rotate(5deg); box-shadow: 5px 5px 0px #880E4F;
-            text-align: center; font-family: 'Montserrat', sans-serif;
-        }
-
-        /* INFO BAR BAWAH */
-        .footer-info {
-            height: 35%; display: grid; grid-template-columns: 1.5fr 1fr 0.6fr;
-            padding: 20px 50px; align-items: center; border-top: 6px solid #1E88E5;
-        }
-
-        /* GLASSMORPHISM QR */
-        .glass-qr {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 12px; border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .bottom-strip {
-            position: absolute; bottom: 0; width: 100%;
-            height: 40px; background: var(--original-dark-blue);
-            display: flex; align-items: center; padding-left: 140px;
-            color: white; font-size: 11px; font-weight: bold;
-        }
-
-        .bottom-strip::before {
-            content: ""; position: absolute; left: 0; width: 120px;
-            height: 100%; background: #FFC107;
+        .footer-bar::before {
+            content: "INFO";
+            position: absolute;
+            left: 0;
+            width: 130px;
+            height: 100%;
+            background: #FFC107;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <div class="poster-canvas">
-        <div class="logo-box">
+        <div class="absolute top-6 left-10 w-24 z-20">
             <img src="logo.png" onerror="this.src='https://via.placeholder.com/100?text=LOGO'">
         </div>
 
-        <div class="sticker-red">
-            <div class="text-[10px] font-bold">DAFTAR</div>
+        <div class="sticker-cta">
+            <div class="text-[11px] font-bold tracking-widest">DAFTAR</div>
             <div class="text-3xl font-black">SEKARANG</div>
         </div>
 
         <div class="header-bg">
             <div class="title-wrapper">
-                <span class="text-side">Daurah<br>Remaja</span>
-                <span class="text-center-script">Quranic</span>
-                <span class="text-side" style="font-size: 60px;">2026</span>
+                <div class="text-side-main text-right">Daurah<br>Remaja</div>
+                <div class="text-script-center">Quranic</div>
+                <div class="text-year-bold">2026</div>
             </div>
-            <p class="mt-4 text-blue-900 font-bold max-w-md text-center">
-                Program intensif hafazan dan pemantapan rohani remaja sempena Ihya' Ramadan 1447H.
-            </p>
+            <div class="bg-white/40 backdrop-blur-sm px-6 py-2 rounded-full border border-white/50">
+                <p class="text-blue-900 font-bold text-sm tracking-wide">
+                    Program Intensif Hafazan & Pemantapan Rohani Ramadan 1447H
+                </p>
+            </div>
         </div>
 
-        <div class="footer-info">
-            <div class="border-r-2 border-gray-100 pr-4">
-                <p class="text-[10px] text-gray-400 font-bold uppercase">Lokasi:</p>
-                <p class="text-xl font-black text-blue-900">MASJID KAMPUNG<br>SUNGAI LANG BARU</p>
+        <div class="info-section">
+            <div class="border-r border-gray-200 pr-8">
+                <span class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">Lokasi Program</span>
+                <h4 class="text-2xl font-black text-[#0A2647] leading-tight mt-1">
+                    MASJID KAMPUNG<br><span class="text-blue-600">SUNGAI LANG BARU</span>
+                </h4>
             </div>
-            <div class="pl-6">
-                <p class="text-[10px] text-gray-400 font-bold uppercase">Tarikh Tutup:</p>
-                <p class="text-lg font-bold text-red-600">1 RAMADAN 1447H</p>
-                <p class="text-[10px] text-blue-500 font-bold italic">TADABBUR SAINS & TAHAP 1-5</p>
+
+            <div class="pl-8">
+                <span class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">Tarikh Tutup</span>
+                <p class="text-xl font-bold text-red-600 mt-1">1 RAMADAN 1447H</p>
+                <div class="mt-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded">TADABBUR SAINS</span>
+                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded">TAHAP 1-5</span>
+                </div>
             </div>
-            <div class="flex justify-end">
-                <div class="glass-qr">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=REGISTER" class="bg-white p-1 rounded">
+
+            <div class="flex flex-col items-center justify-center">
+                <div class="glass-qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=85x85&data=DAFTAR" class="rounded shadow-sm">
+                    <p class="text-[9px] font-bold mt-2 text-blue-900 uppercase">Imbas Untuk Daftar</p>
                 </div>
             </div>
         </div>
 
-        <div class="bottom-strip">
-            FOLLOW FB: @MASJIDKAMPUNGSUNGAILANGBARU
+        <div class="footer-bar">
+            <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider">
+                <i class="fab fa-facebook text-lg text-blue-400"></i>
+                <span>@masjidkampungsungailangbaru</span>
+            </div>
         </div>
     </div>
 
