@@ -5,88 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daurah Remaja 2026 - Masjid Kampung Sawah Lebar</title>
     
-    <meta name="description" content="Program Daurah Remaja 2026 di Masjid Kampung Sawah Lebar. Sertai kami untuk pengisian rohani dan pembangunan jati diri.">
-    <meta property="og:title" content="Daurah Remaja 2026">
-    <meta property="og:description" content="Sertai program pembangunan remaja berteraskan ilmu wahyu. Imbas QR untuk mendaftar.">
-    <meta property="og:image" content="poster_bg.jpg">
-    <meta property="og:type" content="website">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Daurah Remaja 2026",
-      "startDate": "2026-03-01T08:00:00+08:00",
-      "location": {
-        "@type": "Place",
-        "name": "Masjid Kampung Sawah Lebar"
-      },
-      "description": "Program pembangunan remaja muslim berteraskan ilmu wahyu dan jati diri.",
-      "image": ["poster_bg.jpg"]
-    }
-    </script>
+    <meta name="description" content="Program Daurah Remaja 2026. Imbas QR untuk mendaftar.">
+    <meta property="og:image" content="poster_bg.webp">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="image" href="poster_bg.webp">
 </head>
 <body>
 
     <div class="canvas">
-        <img src="poster_bg.jpg" alt="Daurah Remaja 2026" class="poster-img">
+        <img src="poster_bg.webp" alt="Poster Daurah Remaja 2026" class="poster-img">
         
         <div class="content-overlay">
-            <div class="text-item title">DAURAH REMAJA 2026</div>
-            
-            <div class="text-item info">
-                <span style="font-size: 2.5rem; color: #ffeb3b; font-weight: bold;">1 RAMADAN 1447H</span><br>
-                <span style="font-size: 1.8rem;">MASJID KAMPUNG SAWAH LEBAR</span>
-            </div>
-
             <div class="qr-section">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://pengurusanemediamasjidkampungs-dotcom.github.io/pendaftaran-daurah-mkslb-2026/&ecc=H" alt="QR Pendaftaran" class="qr-code">
                 <p class="qr-label">IMBAS UNTUK DAFTAR</p>
             </div>
 
-            <div id="countdown-timer" class="text-item">
-                <p style="font-size: 1.1rem; margin-bottom: 5px; color: #00ff00; font-weight: bold; text-transform: uppercase;">Program Bermula Dalam:</p>
+            <div id="countdown-timer">
+                <p class="timer-label">PROGRAM BERMULA DALAM:</p>
                 <span id="time">--d --h --m --s</span>
             </div>
         </div>
     </div>
 
     <script>
-        /**
-         * Fungsi startTimer
-         * Mengira baki masa sehingga 1 Mac 2026
-         */
         function startTimer() {
             const targetDate = new Date("March 1, 2026 08:00:00").getTime();
-            
             const timerInterval = setInterval(() => {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
                 
-                // Jika tarikh telah tamat
                 if (distance < 0) {
                     clearInterval(timerInterval);
                     document.getElementById("time").innerHTML = "SEDANG BERLANGSUNG";
                     return;
                 }
 
-                // Pengiraan Masa
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 
-                // Kemaskini Paparan HTML
                 document.getElementById("time").innerHTML = 
                     days + "d " + hours + "h " + minutes + "m " + seconds + "s";
             }, 1000);
         }
-
-        // Jalankan Timer sebaik sahaja laman dimuatkan
         window.onload = startTimer;
-        console.log("Sistem Paparan TV Masjid Aktif.");
     </script>
 
 </body>
