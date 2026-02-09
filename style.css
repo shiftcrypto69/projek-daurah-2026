@@ -8,18 +8,19 @@ body {
     background-color: #1a1c2c; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
+    overflow: hidden; /* Elakkan scrollbar pada skrin TV */
 }
 
 /* Container Utama (Canvas) */
 .canvas {
     position: relative;
     width: 95%; 
-    max-width: 600px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    max-width: 900px; /* Diperlebarkan sedikit untuk kesesuaian TV */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     line-height: 0;
     overflow: hidden;
-    border-radius: 12px; 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px; 
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Lapisan Imej Latar Belakang */
@@ -47,83 +48,102 @@ body {
     width: 100%;
     text-align: center;
     color: #ffffff;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    text-shadow: 3px 3px 15px rgba(0,0,0,1);
     pointer-events: auto;
 }
 
 /* Tajuk Program */
 .title {
-    top: 10%;
-    font-size: clamp(1.8rem, 6vw, 3rem);
+    top: 8%;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #ffeb3b; /* Warna kuning emas */
+    letter-spacing: 4px;
+    color: #ffeb3b;
 }
 
 /* Info Tarikh & Lokasi */
 .info {
-    top: 40%;
-    font-size: 1.2rem;
-    font-weight: 500;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 15px 0;
-    backdrop-filter: blur(5px); /* Kesan glassmorphism */
+    top: 35%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 0;
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Countdown Timer Styling */
+/* QR Section - Dioptimumkan untuk Scan Jarak Jauh */
+.qr-section {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+    text-align: center;
+    pointer-events: auto;
+    transition: transform 0.3s ease;
+}
+
+.qr-code {
+    width: 200px; /* Saiz besar untuk TV 43" */
+    height: 200px;
+    display: block;
+}
+
+.qr-label {
+    color: #1a1c2c;
+    font-weight: 900;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-shadow: none;
+    letter-spacing: 1px;
+}
+
+/* Countdown Timer Styling - Kedudukan Kiri Bawah */
 #countdown-timer {
-    bottom: 22%;
-    font-family: 'Courier New', Courier, monospace;
+    bottom: 5%;
+    left: 5%;
+    width: auto;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 25px;
+    border-radius: 15px;
+    border-left: 6px solid #00ff00;
+    backdrop-filter: blur(5px);
 }
 
 #time {
-    display: inline-block;
-    margin-top: 10px;
-    letter-spacing: 1px;
-    border: 2px solid #ffeb3b;
-}
-
-/* Butang Daftar (Call to Action) */
-.cta {
-    display: inline-block;
-    text-decoration: none;
-    background: #e91e63; /* Warna pink/merah terang */
-    color: white;
-    padding: 12px 25px;
-    border-radius: 50px;
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
     font-weight: bold;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite; /* Animasi berdenyut */
+    color: #00ff00;
+    margin-top: 5px;
+    letter-spacing: 2px;
 }
 
-.cta:hover {
-    background: #ff4081;
-    transform: scale(1.1) translateX(-50%) !important;
-    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+/* Penyelarasan untuk Skrin Lebih Kecil/Tablet */
+@media (max-width: 768px) {
+    .qr-code {
+        width: 150px;
+        height: 150px;
+    }
+    .title { font-size: 2rem; }
+    .info { font-size: 1.1rem; }
+    #time { font-size: 1.8rem; }
 }
 
-/* Keyframes untuk Animasi Berdenyut */
-@keyframes pulse {
-    0% {
-        transform: translateX(-50%) scale(1);
-        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7);
-    }
-    70% {
-        transform: translateX(-50%) scale(1.05);
-        box-shadow: 0 0 0 15px rgba(233, 30, 99, 0);
-    }
-    100% {
-        transform: translateX(-50%) scale(1);
-        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
-    }
+/* Animasi Halus untuk QR (Menarik Perhatian) */
+.qr-section {
+    animation: floating 3s ease-in-out infinite;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 480px) {
-    .info { font-size: 0.9rem; }
-    #countdown-timer { font-size: 1.2rem; }
-    .cta { font-size: 0.9rem; padding: 10px 20px; }
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
