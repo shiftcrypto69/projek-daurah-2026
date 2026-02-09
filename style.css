@@ -5,8 +5,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #000; /* Hitam pekat untuk TV */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow: hidden;
 }
 
@@ -14,10 +14,10 @@ body {
 .canvas {
     position: relative;
     width: 98%; 
-    max-width: 1100px; /* Dioptimumkan untuk TV 43" */
-    box-shadow: 0 0 50px rgba(0,0,0,1);
+    max-width: 1100px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.9);
     line-height: 0;
-    border-radius: 10px;
+    border-radius: 20px;
     overflow: hidden;
 }
 
@@ -27,7 +27,6 @@ body {
     display: block;
 }
 
-/* Lapisan Kandungan */
 .content-overlay {
     position: absolute;
     top: 0;
@@ -38,67 +37,86 @@ body {
     pointer-events: none;
 }
 
-/* QR Section - Kanan Bawah */
+/* Dynamic Island Notch - Kiri Bawah */
+#countdown-timer {
+    position: absolute;
+    bottom: 6%;
+    left: 4%;
+    background: rgba(20, 20, 20, 0.85); /* Notch Gelap */
+    padding: 12px 28px;
+    border-radius: 40px; /* Bentuk Pill/Notch */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.timer-label {
+    font-size: 0.7rem;
+    margin: 0;
+    color: #a1a1a1; /* Grey Pastel */
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#time {
+    font-family: 'Courier New', monospace;
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #e0e0e0; /* Grey Pastel Terang */
+    white-space: pre;
+    margin-top: 2px;
+}
+
+/* Modern QR Section - Kanan Bawah */
 .qr-section {
     position: absolute;
-    bottom: 5%;
-    right: 5%;
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+    bottom: 6%;
+    right: 4%;
     text-align: center;
     pointer-events: auto;
-    animation: floating 3s ease-in-out infinite;
+}
+
+.qr-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 24px; /* Border bulat macam iOS */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    display: inline-block;
 }
 
 .qr-code {
-    width: 200px; /* Saiz besar untuk jarak jauh */
-    height: 200px;
+    width: 160px;
+    height: 160px;
     display: block;
+    mix-blend-mode: multiply; /* Biar nampak natural */
 }
 
 .qr-label {
-    color: #000;
-    font-weight: 900;
-    margin-top: 10px;
-    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-top: 12px;
+    font-size: 0.8rem;
     letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Countdown Timer - Kiri Bawah */
+/* Animasi Ringan */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
 #countdown-timer {
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
-    background: rgba(0, 0, 0, 0.75);
-    padding: 15px 25px;
-    border-radius: 12px;
-    border-left: 6px solid #00ff00;
-    backdrop-filter: blur(5px);
+    animation: pulse 4s ease-in-out infinite;
 }
 
-/* KEMASKINI: Gaya Casio Glow Baru */
-#time {
-    font-family: 'Courier New', monospace; /* Font monospace supaya lebar nombor tak berubah-ubah */
-    display: block;
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #00ff00;
-    text-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* Efek glowing digital */
-    white-space: pre; /* Penting supaya "ruang kosong" berkelip tu tak lari posisi */
-    margin-top: 5px;
-}
-
-/* Animasi QR */
-@keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-/* Tablet / Kecil */
+/* Responsif */
 @media (max-width: 768px) {
-    .qr-code { width: 140px; height: 140px; }
-    #time { font-size: 1.8rem; }
+    .qr-code { width: 100px; height: 100px; }
+    #time { font-size: 1.5rem; }
+    #countdown-timer { padding: 8px 20px; }
 }
