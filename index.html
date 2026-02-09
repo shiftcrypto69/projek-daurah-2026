@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daurah Remaja Quranic 2026 - Digital Poster</title>
+    <title>Daurah Remaja Quranic 2026 - Official Poster</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&family=Yellowtail&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@400;700&family=Yellowtail&display=swap');
+
+        :root {
+            --primary-blue: #1d4ed8;
+            --bg-gradient: linear-gradient(135deg, #7dd3fc 0%, #bae6fd 100%);
+            --accent-red: #dc2626;
+            --shadow-red: #991b1b;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #e5e7eb;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,145 +26,153 @@
             margin: 0;
         }
 
-        /* Struktur Kontena Utama (Orientasi Landscape Tepat) */
+        /* 1. KONTENA UTAMA (Orientasi Landscape 1000x580) */
         .poster-container {
             width: 1000px; 
             height: 580px;
             background: #ffffff;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.3);
             position: relative;
-            border: 8px solid white;
+            border: 12px solid white;
         }
 
-        /* Bahagian Atas (Grafik Hero) */
+        /* 2. HEADER GRAFIK (Hero Section) */
         .header-section {
-            background: linear-gradient(135deg, #7dd3fc 0%, #bae6fd 100%);
+            background: var(--bg-gradient);
             height: 65%;
             position: relative;
             padding: 40px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            z-index: 1;
         }
 
-        /* Overlay Tekstur (Simulasi corak halus) */
+        /* Tekstur Overlay Halus */
         .header-section::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-            opacity: 0.1;
-            pointer-events: none;
+            opacity: 0.15;
+            z-index: -1;
         }
 
-        .title-daurah {
+        .title-sub {
             font-family: 'Montserrat', sans-serif;
             color: #1e3a8a;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 1.2rem;
-            margin-bottom: -10px;
+            letter-spacing: 6px;
+            font-size: 1.1rem;
+            margin-bottom: -5px;
         }
 
-        /* Gaya Tulisan "Quranic" yang tepat */
-        .title-quranic {
-            font-family: 'Yellowtail', cursive; /* Fon skrip yang lebih hampir */
-            color: #2563eb;
-            font-size: 130px;
-            line-height: 1;
-            text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.8), 8px 8px 15px rgba(0,0,0,0.1);
-            transform: rotate(-3deg);
+        /* Efek Tulisan "Quranic" Yang Tepat */
+        .title-main {
+            font-family: 'Yellowtail', cursive;
+            color: var(--primary-blue);
+            font-size: 140px;
+            line-height: 0.9;
             margin-left: -10px;
+            transform: rotate(-3deg);
+            /* Glow & Shadow Putih Berdasarkan Metadata */
+            text-shadow: 
+                3px 3px 0px #fff, 
+                -3px -3px 0px #fff, 
+                3px -3px 0px #fff, 
+                -3px 3px 0px #fff,
+                8px 12px 25px rgba(0,0,0,0.1);
         }
 
-        .year-text {
+        .title-year {
             font-family: 'Montserrat', sans-serif;
-            font-size: 50px;
+            font-size: 60px;
             font-weight: 900;
-            color: #1f2937;
-            margin-top: -20px;
+            color: #111827;
+            margin-top: -15px;
+            letter-spacing: -2px;
         }
 
-        /* Butang "Register Now" (Floating Style) */
-        .register-tag {
-            background: #dc2626;
+        /* 3. BADGE REGISTER (Floating) */
+        .register-badge {
+            background: var(--accent-red);
             color: white;
-            padding: 15px 25px;
+            padding: 18px 30px;
             border-radius: 15px;
             font-weight: 900;
             text-align: center;
-            box-shadow: 6px 6px 0px #7f1d1d;
+            box-shadow: 7px 7px 0px var(--shadow-red);
             position: absolute;
-            top: 40px;
-            right: 60px;
-            transform: rotate(2deg);
+            top: 50px;
+            right: 70px;
+            transform: rotate(4deg);
             z-index: 10;
+            line-height: 1;
         }
 
-        /* Bahagian Maklumat (Grid Bawah) */
+        /* 4. GRID MAKLUMAT (Bottom Section) */
         .info-section {
             height: 35%;
             display: grid;
-            grid-template-columns: 1.2fr 1.2fr 0.6fr;
-            padding: 25px 50px;
-            gap: 30px;
+            grid-template-columns: 1.3fr 1fr 0.7fr;
+            padding: 30px 60px;
+            gap: 40px;
             background: white;
-            border-top: 5px solid #3b82f6;
-            z-index: 5;
+            border-top: 6px solid #3b82f6; /* Divider Biru */
+            position: relative;
         }
 
-        .info-item {
+        .info-card {
             display: flex;
             align-items: flex-start;
             gap: 15px;
         }
 
-        .info-icon {
+        .icon-box {
             background: #eff6ff;
             color: #2563eb;
             padding: 12px;
-            border-radius: 12px;
-            font-size: 1.5rem;
+            border-radius: 14px;
+            font-size: 1.6rem;
         }
 
-        /* Footer "Follow Us" Bar */
+        /* 5. FOOTER & CLOSING */
         .footer-bar {
-            background: linear-gradient(90deg, #fbbf24 0%, #fbbf24 15%, #1e40af 15.5%, #1e40af 100%);
+            background: linear-gradient(90deg, #fbbf24 0%, #fbbf24 12%, #1e40af 12.1%, #1e40af 100%);
             color: white;
-            padding: 8px 50px;
+            padding: 10px 60px;
             display: flex;
             align-items: center;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* Tarikh Tutup (Badge Merah) */
-        .closing-date {
-            background: #dc2626;
+        .closing-date-badge {
+            background: var(--accent-red);
             color: white;
-            padding: 12px 25px;
-            border-radius: 15px 15px 0 0;
+            padding: 12px 30px;
+            border-radius: 12px 12px 0 0;
             font-weight: 900;
             position: absolute;
-            bottom: 0;
+            bottom: 40px; /* Di atas footer bar */
             right: 60px;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Dekorasi Daun */
-        .leaf-decoration {
+        .leaf-bg {
             position: absolute;
-            bottom: -20px;
+            bottom: -30px;
             right: -20px;
-            font-size: 180px;
+            font-size: 200px;
             color: #22c55e;
-            opacity: 0.15;
-            transform: rotate(-15deg);
+            opacity: 0.12;
+            transform: rotate(-20deg);
+            pointer-events: none;
         }
     </style>
 </head>
@@ -165,60 +180,55 @@
 
     <div class="poster-container">
         
-        <div class="register-tag">
-            <p class="text-xs uppercase tracking-tighter">Register</p>
-            <p class="text-3xl font-black">NOW</p>
+        <div class="register-badge">
+            <div class="text-[10px] uppercase tracking-widest mb-1 opacity-90">Register</div>
+            <div class="text-4xl">NOW</div>
         </div>
 
         <div class="header-section">
-            <h3 class="title-daurah">Daurah Remaja</h3>
-            <h1 class="title-quranic">Quranic</h1>
-            <h2 class="year-text">2026</h2>
+            <h3 class="title-sub">Daurah Remaja</h3>
+            <h1 class="title-main">Quranic</h1>
+            <h2 class="title-year">2026</h2>
             
-            <p class="mt-4 max-w-sm text-blue-900 font-semibold text-sm leading-relaxed border-l-4 border-blue-600 pl-4">
+            <p class="mt-4 max-w-sm text-blue-950 font-bold text-sm leading-relaxed border-l-4 border-blue-600 pl-4 bg-white/30 py-2 rounded-r-lg">
                 Program intensif hafazan dan pemantapan rohani khas untuk remaja sempena Ihya' Ramadan 1447H
             </p>
 
-            <i class="fas fa-leaf leaf-decoration"></i>
+            <i class="fas fa-leaf leaf-bg"></i>
         </div>
 
         <div class="info-section">
-            <div class="info-item border-r border-gray-100 pr-4">
-                <div class="info-icon text-blue-600"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-card border-r border-gray-100 pr-6">
+                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                 <div>
-                    <h4 class="font-black text-gray-800 text-sm uppercase">Masjid Kampung</h4>
-                    <p class="text-blue-600 font-black text-lg leading-tight uppercase">Sungai Lang Baru</p>
+                    <h4 class="font-bold text-gray-500 text-xs uppercase tracking-tighter">Lokasi Program</h4>
+                    <p class="text-blue-700 font-black text-xl leading-tight uppercase">Masjid Kampung<br>Sungai Lang Baru</p>
                 </div>
             </div>
 
-            <div class="info-item border-r border-gray-100 pr-4">
-                <div class="info-icon text-yellow-500"><i class="fas fa-calendar-check"></i></div>
+            <div class="info-card">
+                <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
                 <div>
-                    <h4 class="font-black text-gray-800 text-sm uppercase">Setiap Hujung Minggu</h4>
-                    <p class="text-gray-600 text-xs font-bold uppercase mb-1">Tahap 1-5 & Tadabbur Sains</p>
-                    <ul class="text-[10px] text-gray-500 font-bold list-disc ml-4 leading-tight">
-                        <li>Lancar Bacaan</li>
-                        <li>Minat Hafazan Tinggi</li>
-                    </ul>
+                    <h4 class="font-bold text-gray-500 text-xs uppercase tracking-tighter">Masa & Silibus</h4>
+                    <p class="text-gray-800 font-bold text-sm">Hujung Minggu (Sabtu & Ahad)</p>
+                    <p class="text-blue-600 text-[11px] font-bold uppercase mt-1 italic">Tadabbur Sains & Tahap 1-5</p>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center">
-                <p class="text-[10px] font-black uppercase mb-1 text-gray-400">Scan Me</p>
-                <div class="bg-white p-1 border-2 border-gray-800 rounded-lg">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://facebook.com/masjidkampungsungailangbaru" alt="QR Code">
-                </div>
+            <div class="flex flex-col items-center justify-center bg-gray-50 rounded-xl p-2 border border-dashed border-gray-300">
+                <p class="text-[9px] font-black uppercase mb-1 text-gray-400">Scan Untuk Daftar</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=85x85&data=https://facebook.com/masjidkampungsungailangbaru" alt="QR Code" class="rounded shadow-sm">
             </div>
+        </div>
+
+        <div class="closing-date-badge">
+            <span class="text-[10px] opacity-80 uppercase mr-1">Tutup:</span> 1 RAMADAN 1447
         </div>
 
         <div class="footer-bar">
-            <span class="mr-6 text-blue-900 uppercase tracking-widest text-xs">Follow Us</span>
-            <i class="fab fa-facebook-square text-xl mr-2"></i>
-            <span class="text-sm">@masjidkampungsungailangbaru</span>
-        </div>
-
-        <div class="closing-date">
-            <span class="text-xs">TARIKH TUTUP:</span> 1 RAMADAN 1447
+            <span class="mr-6 text-yellow-950 uppercase tracking-widest text-[10px]">Follow Us</span>
+            <i class="fab fa-facebook-square text-lg mr-2"></i>
+            <span class="tracking-tight">@masjidkampungsungailangbaru</span>
         </div>
 
     </div>
